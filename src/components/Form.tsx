@@ -69,29 +69,36 @@ const Form = () => {
 
     const handleSumbit = (e: FormEvent) => {
         e.preventDefault();
-
+      
         const data: Infos = {
-            cpf,
-            nome,
-            email,
-            celular,
-            estado,
-            cidade,
-            aceito
-        }
-
+          cpf,
+          nome,
+          email,
+          celular,
+          estado,
+          cidade,
+          aceito
+        };
+      
         const validateErros = validate(data);
-
-        console.log(data, validateErros)
-
-        if(Object.keys(validateErros).length > 0){
-            setErros(validateErros);
-            alert('Preencha todos os campos');
-            return 
+      
+        console.log(data, validateErros);
+      
+        if (Object.keys(validateErros).length > 0) {
+          if (validateErros.cpf) setCpf('');
+          if (validateErros.nome) setNome('');
+          if (validateErros.email) setEmail('');
+          if (validateErros.celular) setCelular('');
+          if (validateErros.estado) setEstado('');
+          if (validateErros.cidade) setCidade('');
+      
+          setErros(validateErros);
+          alert('Preencha todos os campos');
+          return;
         }
-
+      
         alert('Inscrito');
-    }
+    };
 
     return (
         <form className="flex flex-col items-center justify-center gap-3 w-full" onSubmit={handleSumbit}>
