@@ -2,6 +2,7 @@ import Campo from "./Campo";
 import { useState, FormEvent } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { Infos } from "../types/Infos";
+import { FiAlertOctagon } from "react-icons/fi";
 import { validate } from "../utils/validate";
 
 const Form = () => {
@@ -33,62 +34,78 @@ const Form = () => {
         console.log(data, validateErros)
 
         if(Object.keys(validateErros).length > 0){
-            alert('Preencha todos os campos')
+            setErros(validateErros);
+            alert('Preencha todos os campos');
             return 
         }
 
-        alert('test')
+        alert('Inscrito');
     }
 
     return (
         <form className="flex flex-col items-center justify-center gap-3 w-full" onSubmit={handleSumbit}>
 
+            {erros && (
+                <div className="flex flex-row items-center w-full px-8 gap-1">
+                <FiAlertOctagon className="text-Vermelho85 w-5 h-5" />
+                <label className="font-campuni text-Vermelho85 font-bold text-sm">
+                  Preencha os campos marcados corretamente
+                </label>
+              </div>
+            )}
+
             <Campo
             name="CPF"
-            placeholder="Informe seu CPF"
+            placeholder={erros?.cpf ? erros.cpf : "Informe seu CPF"}
             tipo="number"
             valor={cpf}
             onChange={(value) => setCpf(value)} 
+            iserro={!!erros?.cpf} 
             />
 
             <Campo
             name="Nome"
-            placeholder="Preencha seu nome completo"
+            placeholder={erros?.nome ? erros.nome : "Preencha seu nome completo"}
             tipo="text"
             valor={nome}
-            onChange={(value) => setNome(value)} 
+            onChange={(value) => setNome(value)}
+            iserro={!!erros?.nome} 
             />
 
             <Campo
             name="Email"
-            placeholder="Informe seu melhor e-mail"
+            placeholder={erros?.email ? erros.email: "Informe seu melhor e-mail"}
             tipo="text"
             valor={email}
             onChange={(value) => setEmail((value))} 
+            iserro={!!erros?.email} 
             />
 
             <Campo
             name="Celular"
-            placeholder="DDD + telefone"
+            placeholder={erros?.celular ? erros.celular: "DDD + telefone"}
             tipo="number"
             valor={celular}
             onChange={(value) => setCelular((value))} 
+            iserro={!!erros?.celular} 
             />
 
             <Campo
             name="Estado"
-            placeholder="Selecione"
+            placeholder={erros?.estado ? erros.estado: "Selecione"}
             tipo="text"
             valor={estado}
             onChange={(value) => setEstado(value)} 
+            iserro={!!erros?.estado} 
             />
 
             <Campo
             name="Cidade"
-            placeholder="Informe a cidade"
+            placeholder={erros?.cidade ? erros.cidade:"Informe a cidade"}
             tipo="text"
             valor={cidade}
             onChange={(value) => setCidade(value)} 
+            iserro={!!erros?.estado} 
             />
 
             <div className="flex items-center gap-2">
