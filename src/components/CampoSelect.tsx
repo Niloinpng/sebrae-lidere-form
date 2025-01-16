@@ -5,6 +5,7 @@ interface CampoSelectProps {
     onChange: (value: string) => void;
     iserro?: boolean;
     options: { value: string; label: string }[];
+    onFocus?: () => void;  // Nova prop opcional onFocus
   }
   
   const CampoSelect = ({
@@ -14,6 +15,7 @@ interface CampoSelectProps {
     onChange,
     iserro,
     options,
+    onFocus,  // Recebe a prop onFocus
   }: CampoSelectProps) => (
     <div
       className={`w-full rounded-full flex items-center justify-center p-3
@@ -33,6 +35,9 @@ interface CampoSelectProps {
         `}
         value={valor}
         onChange={(e) => onChange(e.target.value)}
+        onFocus={() => {
+          if(onFocus) onFocus();
+        }}
       >
         {placeholder && (
           <option value="" disabled hidden>

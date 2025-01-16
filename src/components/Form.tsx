@@ -97,9 +97,9 @@ const Form = () => {
         <form className="flex flex-col items-center justify-center gap-3 w-full" onSubmit={handleSumbit}>
 
             {erros && (
-                <div className="flex flex-row items-center w-full px-8 gap-1">
+                <div className="flex flex-row items-center w-full px-2 gap-1">
                 <FiAlertOctagon className="text-Vermelho85 w-5 h-5" />
-                <label className="font-campuni text-Vermelho85 font-bold text-sm">
+                <label className="font-campuni text-Vermelho85 font-bold text-xs">
                   Preencha os campos marcados corretamente
                 </label>
               </div>
@@ -113,6 +113,11 @@ const Form = () => {
             onChange={(value) => setCpf(value)}
             iserro={!!erros?.cpf}
             formatFunction={formatCPF}
+            onFocus={() => {
+                if(erros?.cpf) {
+                setErros(prev => ({ ...prev, cpf: undefined })); 
+                }
+            }}
             />
 
             <Campo
@@ -121,7 +126,12 @@ const Form = () => {
             tipo="text"
             valor={nome}
             onChange={(value) => setNome(value)}
-            iserro={!!erros?.nome} 
+            iserro={!!erros?.nome}
+            onFocus={() => {
+                if(erros?.nome) {
+                setErros(prev => ({ ...prev, nome: undefined })); 
+                }
+            }}
             />
 
             <Campo
@@ -131,6 +141,11 @@ const Form = () => {
             valor={email}
             onChange={(value) => setEmail((value))} 
             iserro={!!erros?.email} 
+            onFocus={() => {
+                if(erros?.email) {
+                setErros(prev => ({ ...prev, email: undefined })); 
+                }
+            }}
             />
 
             <Campo
@@ -141,6 +156,11 @@ const Form = () => {
             onChange={(value) => setCelular(value)}
             iserro={!!erros?.celular}
             formatFunction={formatTelefone}
+            onFocus={() => {
+                if(erros?.celular) {
+                setErros(prev => ({ ...prev, celular: undefined })); 
+                }
+            }}
             />
 
             <CampoSelect
@@ -150,6 +170,11 @@ const Form = () => {
             onChange={(value) => setEstado(value)}
             iserro={!!erros?.estado} 
             options={[UF[0], ...UF]}
+            onFocus={() => {
+                if(erros?.estado) {
+                  setErros(prev => ({ ...prev, estado: undefined }));
+                }
+              }}
             />
 
             <Campo
@@ -159,6 +184,11 @@ const Form = () => {
             valor={cidade}
             onChange={(value) => setCidade(value)} 
             iserro={!!erros?.cidade} 
+            onFocus={() => {
+                if(erros?.cidade) {
+                setErros(prev => ({ ...prev, cidade: undefined })); 
+                }
+            }}
             />
 
             <div className="flex items-center gap-2">

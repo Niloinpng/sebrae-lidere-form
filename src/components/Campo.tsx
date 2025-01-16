@@ -6,6 +6,7 @@ interface CampoProps {
   onChange: (value: string) => void;
   iserro?: boolean;
   formatFunction?: (value: string) => string;  
+  onFocus?: () => void;  
 }
 
 const Campo = ({
@@ -16,6 +17,7 @@ const Campo = ({
   onChange,
   iserro,
   formatFunction,
+  onFocus,
 }: CampoProps) => (
   <div
     className={`w-full rounded-full flex items-center justify-center p-3
@@ -42,6 +44,9 @@ const Campo = ({
           inputVal = formatFunction(inputVal);
         }
         onChange(inputVal);
+      }}
+      onFocus={() => {
+        if(onFocus) onFocus();
       }}
     />
   </div>
