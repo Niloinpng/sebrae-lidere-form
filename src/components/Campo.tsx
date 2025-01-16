@@ -5,6 +5,7 @@ interface CampoProps {
   tipo: string;
   onChange: (value: string) => void;
   iserro?: boolean;
+  formatFunction?: (value: string) => string;  
 }
 
 const Campo = ({
@@ -14,6 +15,7 @@ const Campo = ({
   tipo,
   onChange,
   iserro,
+  formatFunction,
 }: CampoProps) => (
   <div
     className={`w-full rounded-full flex items-center justify-center p-3
@@ -29,16 +31,18 @@ const Campo = ({
         font-figtree font-medium w-full focus:outline-none
         placeholder:italic
         bg-transparent
-        ${
-          iserro
-            ? "placeholder-Vermelho35" 
-            : "placeholder:text-Cinza"
-        }
+        ${iserro ? "placeholder-Vermelho35" : "placeholder:text-Cinza"}
       `}
       type={tipo}
       placeholder={placeholder}
       value={valor}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => {
+        let inputVal = e.target.value;
+        if (formatFunction) {
+          inputVal = formatFunction(inputVal);
+        }
+        onChange(inputVal);
+      }}
     />
   </div>
 );

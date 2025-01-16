@@ -5,6 +5,27 @@ import { Infos } from "../types/Infos";
 import { FiAlertOctagon } from "react-icons/fi";
 import { validate } from "../utils/validate";
 
+const formatCPF = (value: string): string => {
+    let v = value.replace(/\D/g, "").slice(0, 11);
+    v = v.replace(/(\d{3})(\d)/, "$1.$2");
+    v = v.replace(/(\d{3})(\d)/, "$1.$2");
+    v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    return v;
+};
+  
+const formatTelefone = (value: string): string => {
+    let v = value.replace(/\D/g, "").slice(0, 11);
+    // Verifica se tem 11 dígitos para incluir nono dígito
+    if (v.length <= 10) {
+      v = v.replace(/(\d{2})(\d)/, "($1) $2");
+      v = v.replace(/(\d{4})(\d)/, "$1-$2");
+    } else {
+      v = v.replace(/(\d{2})(\d)/, "($1) $2");
+      v = v.replace(/(\d{5})(\d)/, "$1-$2");
+    }
+    return v;
+};
+
 const Form = () => {
     const[cpf, setCpf] = useState('');
     const[nome, setNome] = useState('');
@@ -57,10 +78,11 @@ const Form = () => {
             <Campo
             name="CPF"
             placeholder={erros?.cpf ? erros.cpf : "Informe seu CPF"}
-            tipo="number"
+            tipo="text" 
             valor={cpf}
-            onChange={(value) => setCpf(value)} 
-            iserro={!!erros?.cpf} 
+            onChange={(value) => setCpf(value)}
+            iserro={!!erros?.cpf}
+            formatFunction={formatCPF}
             />
 
             <Campo
@@ -83,11 +105,12 @@ const Form = () => {
 
             <Campo
             name="Celular"
-            placeholder={erros?.celular ? erros.celular: "DDD + telefone"}
-            tipo="number"
+            placeholder={erros?.celular ? erros.celular : "DDD + telefone"}
+            tipo="text" 
             valor={celular}
-            onChange={(value) => setCelular((value))} 
-            iserro={!!erros?.celular} 
+            onChange={(value) => setCelular(value)}
+            iserro={!!erros?.celular}
+            formatFunction={formatTelefone}
             />
 
             <Campo
