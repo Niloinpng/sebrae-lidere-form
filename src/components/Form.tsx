@@ -1,9 +1,40 @@
 import Campo from "./Campo";
+import CampoSelect from "./CampoSelect";
 import { useState, FormEvent } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { Infos } from "../types/Infos";
 import { FiAlertOctagon } from "react-icons/fi";
 import { validate } from "../utils/validate";
+
+const UF = [
+    { value: "AC", label: "Acre" },
+    { value: "AL", label: "Alagoas" },
+    { value: "AP", label: "Amapá" },
+    { value: "AM", label: "Amazonas" },
+    { value: "BA", label: "Bahia" },
+    { value: "CE", label: "Ceará" },
+    { value: "DF", label: "Distrito Federal" },
+    { value: "ES", label: "Espírito Santo" },
+    { value: "GO", label: "Goiás" },
+    { value: "MA", label: "Maranhão" },
+    { value: "MT", label: "Mato Grosso" },
+    { value: "MS", label: "Mato Grosso do Sul" },
+    { value: "MG", label: "Minas Gerais" },
+    { value: "PA", label: "Pará" },
+    { value: "PB", label: "Paraíba" },
+    { value: "PR", label: "Paraná" },
+    { value: "PE", label: "Pernambuco" },
+    { value: "PI", label: "Piauí" },
+    { value: "RJ", label: "Rio de Janeiro" },
+    { value: "RN", label: "Rio Grande do Norte" },
+    { value: "RS", label: "Rio Grande do Sul" },
+    { value: "RO", label: "Rondônia" },
+    { value: "RR", label: "Roraima" },
+    { value: "SC", label: "Santa Catarina" },
+    { value: "SP", label: "São Paulo" },
+    { value: "SE", label: "Sergipe" },
+    { value: "TO", label: "Tocantins" },
+]
 
 const formatCPF = (value: string): string => {
     let v = value.replace(/\D/g, "").slice(0, 11);
@@ -15,7 +46,6 @@ const formatCPF = (value: string): string => {
   
 const formatTelefone = (value: string): string => {
     let v = value.replace(/\D/g, "").slice(0, 11);
-    // Verifica se tem 11 dígitos para incluir nono dígito
     if (v.length <= 10) {
       v = v.replace(/(\d{2})(\d)/, "($1) $2");
       v = v.replace(/(\d{4})(\d)/, "$1-$2");
@@ -113,13 +143,13 @@ const Form = () => {
             formatFunction={formatTelefone}
             />
 
-            <Campo
+            <CampoSelect
             name="Estado"
-            placeholder={erros?.estado ? erros.estado: "Selecione"}
-            tipo="text"
+            placeholder={erros?.estado ? erros.estado:"Selecione"}
             valor={estado}
-            onChange={(value) => setEstado(value)} 
+            onChange={(value) => setEstado(value)}
             iserro={!!erros?.estado} 
+            options={[UF[0], ...UF]}
             />
 
             <Campo
@@ -128,7 +158,7 @@ const Form = () => {
             tipo="text"
             valor={cidade}
             onChange={(value) => setCidade(value)} 
-            iserro={!!erros?.estado} 
+            iserro={!!erros?.cidade} 
             />
 
             <div className="flex items-center gap-2">
