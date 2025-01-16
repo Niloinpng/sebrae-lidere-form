@@ -20,19 +20,19 @@ const Campo = ({
   onFocus,
 }: CampoProps) => (
   <div
-    className={`w-full rounded-full flex items-center justify-center p-3
+    className={`w-full rounded-full flex items-center p-3
       focus-within:ring-2 focus-within:ring-black
       ${iserro ? "bg-Vermelho95 border border-Vermelho35" : "bg-white"}
     `}
   >
-    <label className="font-figtree text-LidereAzul62 font-medium px-2">
+    <label className="w-14 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1">
       {name}:
     </label>
     <input
       className={`
-        font-figtree font-medium w-full focus:outline-none
-        placeholder:italic
-        bg-transparent
+        w-full font-figtree font-medium focus:outline-none
+        placeholder:italic bg-transparent
+        text-xs
         ${iserro ? "placeholder-Vermelho35" : "placeholder:text-Cinza"}
       `}
       type={tipo}

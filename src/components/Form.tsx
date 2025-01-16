@@ -6,6 +6,10 @@ import { Infos } from "../types/Infos";
 import { FiAlertOctagon } from "react-icons/fi";
 import { validate } from "../utils/validate";
 
+interface FormProps {
+    onSuccess?: () => void; 
+}
+
 const UF = [
     { value: "AC", label: "Acre" },
     { value: "AL", label: "Alagoas" },
@@ -56,7 +60,7 @@ const formatTelefone = (value: string): string => {
     return v;
 };
 
-const Form = () => {
+const Form = ({ onSuccess }: FormProps) => {
     const[cpf, setCpf] = useState('');
     const[nome, setNome] = useState('');
     const[email, setEmail] = useState('');
@@ -93,11 +97,11 @@ const Form = () => {
           if (validateErros.cidade) setCidade('');
       
           setErros(validateErros);
-          alert('Preencha todos os campos');
           return;
         }
-      
-        alert('Inscrito');
+        
+        if (onSuccess) {onSuccess();}
+
     };
 
     return (
