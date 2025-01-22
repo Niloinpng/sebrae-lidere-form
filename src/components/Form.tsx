@@ -105,7 +105,7 @@ const Form = ({ onSuccess }: FormProps) => {
     };
 
     return (
-        <form className="flex flex-col items-center justify-center gap-3 w-full" onSubmit={handleSumbit}>
+        <form className="flex flex-col items-center justify-center gap-3 lg:gap-5 w-full" onSubmit={handleSumbit}>
 
             {erros && (
                 <div className="flex flex-row items-center w-full px-2 gap-1">
@@ -210,7 +210,7 @@ const Form = ({ onSuccess }: FormProps) => {
 
             </div>
 
-            <div className="w-full flex flex-col lg:flex-row gap-3 items-center justify-center lg:justify-between ">
+            <div className="w-full flex flex-col lg:flex-row gap-1 lg:gap-3 items-center justify-center lg:justify-between ">
 
             <div className="flex items-center gap-2">
 
@@ -234,7 +234,7 @@ const Form = ({ onSuccess }: FormProps) => {
 
             <button 
                 type="submit"
-                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 lg:p-6 text-sm lg:text-2xl"
+                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 lg:p-6 text-sm lg:text-xl"
             >
                 Quero fazer o Lidere
             </button>
