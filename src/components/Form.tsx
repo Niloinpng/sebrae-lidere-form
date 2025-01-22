@@ -145,6 +145,8 @@ const Form = ({ onSuccess }: FormProps) => {
             }}
             />
 
+            <div className="w-full flex flex-col lg:flex-row gap-3">
+
             <Campo
             name="Email"
             placeholder={erros?.email ? erros.email: "Informe seu melhor e-mail"}
@@ -174,6 +176,10 @@ const Form = ({ onSuccess }: FormProps) => {
             }}
             />
 
+            </div>
+
+            <div className="w-full flex flex-col lg:flex-row gap-3">
+
             <CampoSelect
             name="Estado"
             placeholder={erros?.estado ? erros.estado:"Selecione"}
@@ -202,6 +208,10 @@ const Form = ({ onSuccess }: FormProps) => {
             }}
             />
 
+            </div>
+
+            <div className="w-full flex flex-col lg:flex-row gap-3 items-center justify-center lg:justify-between ">
+
             <div className="flex items-center gap-2">
 
                 <label className="relative w-5 h-5">
@@ -216,7 +226,7 @@ const Form = ({ onSuccess }: FormProps) => {
                     )}
                 </label>
 
-                <label className="font-figtree font-medium text-white text-xs">
+                <label className="font-figtree font-medium text-white text-xs lg:text-base">
                     Aceito receber conteúdos exclusivos do Sebrae
                 </label>
 
@@ -224,10 +234,12 @@ const Form = ({ onSuccess }: FormProps) => {
 
             <button 
                 type="submit"
-                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 text-sm"
+                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 lg:p-6 text-sm lg:text-2xl"
             >
                 Quero fazer o Lidere
             </button>
+
+            </div>
 
         </form>
     );

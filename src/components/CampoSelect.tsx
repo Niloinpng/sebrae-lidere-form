@@ -18,12 +18,12 @@ interface CampoSelectProps {
     onFocus,  
   }: CampoSelectProps) => (
     <div
-      className={`w-full rounded-full flex items-center justify-center p-3
+      className={`w-full rounded-full flex items-center justify-center p-3 lg:p-4
         focus-within:ring-2 focus-within:ring-black
         ${iserro ? "bg-Vermelho95 border border-Vermelho35" : "bg-white"}
       `}
     >
-      <label className="w-14 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1">
+      <label className="w-14 lg:w-24 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1 lg:text-xl lg:font-bold">
         {name}:
       </label>
       <select
@@ -31,6 +31,8 @@ interface CampoSelectProps {
           w-full font-figtree font-medium w-full focus:outline-none
           bg-transparent
           text-xs
+          lg:text-xl
+          lg:font-bold
           ${iserro ? "text-Vermelho35" : "text-Cinza"}
           ${valor === "" ? "italic text-Cinza" : "normal-case text-black"}
         `}
