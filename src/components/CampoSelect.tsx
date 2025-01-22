@@ -28,7 +28,7 @@ interface CampoSelectProps {
       </label>
       <select
         className={`
-          w-full font-figtree font-medium w-full focus:outline-none
+          w-full font-figtree font-medium focus:outline-none
           bg-transparent
           text-xs
           lg:text-xl
