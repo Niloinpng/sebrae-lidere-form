@@ -11,7 +11,7 @@ function App() {
     <div className="relative bg-LiderePreto10 min-h-screen w-full flex items-center justify-center overflow-hidden">
 
       <div 
-        className="absolute inset-0 bg-center bg-no-repeat md:hidden"
+        className="absolute inset-0 bg-center bg-no-repeat xl:hidden"
         style={{
           backgroundImage: `url(${fundomoblie})`,
           backgroundSize: 'cover', 
@@ -19,7 +19,7 @@ function App() {
       />
 
       <div 
-        className="absolute inset-0 bg-center bg-no-repeat hidden md:block"
+        className="absolute inset-0 bg-center bg-no-repeat hidden xl:block"
         style={{
           backgroundImage: `url(${fundo})`,
           backgroundSize: '80%', 
