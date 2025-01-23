@@ -20,7 +20,7 @@ const Campo = ({
   onFocus,
 }: CampoProps) => (
   <div
-    className={`w-full rounded-full flex items-center p-3 xl:p-3
+    className={`w-full rounded-full flex items-center p-3 xl:p-3 2xl:p-4
       focus-within:ring-2 focus-within:ring-black
       ${iserro ? "bg-Vermelho95 border border-Vermelho35" : "bg-white"}
     `}

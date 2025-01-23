@@ -27,7 +27,9 @@ function App() {
       />
 
       <div className="relative flex flex-col items-center justify-center p-4 gap-3 z-10 
-                      xl:mx-72">
+                      xl:mx-72
+                      2xl:mx-96
+                      ">
         {success ? (
           <div className="flex flex-col items-center justify-center gap-16">
             <div className="bg-white rounded-full p-4">
@@ -41,13 +43,22 @@ function App() {
           <>
             <h1 className="font-campuni text-white text-center text-base 
                           xl:px-16
-                          xl:text-3xl">
+                          xl:text-3xl
+                          xl:font-bold
+                          2xl:text-4xl
+                          2xl:px-48"
+                          >
               Possuo o perfil adequado para participar do Lidere e <span className="font-bold">tenho interesse</span>
             </h1>
             <h2 className="font-alegreya text-white text-center text-xs
                           xl:px-16
-                          xl:text-xm">
-              Lidere é um curso presencial que estará disponível em todo o Brasil a partir de 2025. Preencha os campos abaixo para ser notificado quando houver turmas disponíveis em seu estado
+                          xl:text-xm
+                          xl:font-bold
+                          2xl:text-xl
+                          ">
+              Lidere é um curso presencial que estará disponível em todo o Brasil a partir de 2025.
+              <span className="hidden xl:inline"><br></br></span>
+              Preencha os campos abaixo para ser notificado quando houver turmas disponíveis em seu estado
             </h2>
             <Form onSuccess={() => setSuccess(true)} />
           </>

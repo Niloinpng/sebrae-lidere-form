@@ -105,12 +105,12 @@ const Form = ({ onSuccess }: FormProps) => {
     };
 
     return (
-        <form className="flex flex-col items-center justify-center gap-3 xl:gap-5 w-full" onSubmit={handleSumbit}>
+        <form className="flex flex-col items-center justify-center gap-3 xl:gap-5 w-full 2xl:px-4" onSubmit={handleSumbit}>
 
             {erros && (
-                <div className="flex flex-row items-center w-full px-2 gap-1">
-                <FiAlertOctagon className="text-Vermelho85 w-5 h-5" />
-                <label className="font-campuni text-Vermelho85 font-bold text-xs">
+                <div className="flex flex-row items-center w-full px-2 gap-1 xl:gap-2">
+                <FiAlertOctagon className="text-Vermelho85 w-5 h-5 xl:w-6 xl:h-6" />
+                <label className="font-campuni text-Vermelho85 font-bold text-xs xl:text-base">
                   Preencha os campos marcados corretamente
                 </label>
               </div>
@@ -234,7 +234,7 @@ const Form = ({ onSuccess }: FormProps) => {
 
             <button 
                 type="submit"
-                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 xl:p-4 text-sm xl:text-2xm"
+                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 xl:p-4 2xl:p-6 text-sm xl:text-2xm"
             >
                 Quero fazer o Lidere
             </button>
