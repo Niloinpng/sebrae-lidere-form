@@ -210,7 +210,7 @@ const Form = ({ onSuccess }: FormProps) => {
 
             </div>
 
-            <div className="w-full flex flex-col lg:flex-row gap-1 lg:gap-3 items-center justify-center lg:justify-between ">
+            <div className="w-full flex flex-col lg:flex-row gap-3 my-3 xl:my-0 items-center justify-center lg:justify-between ">
 
             <div className="flex items-center gap-2">
 
