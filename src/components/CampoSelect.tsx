@@ -23,7 +23,7 @@ interface CampoSelectProps {
         ${iserro ? "bg-Vermelho95 border border-Vermelho35" : "bg-white"}
       `}
     >
-      <label className="w-14 xl:ml-4 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1 xl:text-lg xl:font-bold">
+      <label className="w-14 xl:ml-4 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1 xl:text-lg">
         {name}:
       </label>
       <select
@@ -33,7 +33,6 @@ interface CampoSelectProps {
           text-xs
           xl:ml-4
           xl:text-lg
-          xl:font-bold
           ${iserro ? "text-Vermelho35" : "text-Cinza"}
           ${valor === "" ? "italic text-Cinza" : "normal-case text-black"}
         `}

@@ -234,7 +234,7 @@ const Form = ({ onSuccess }: FormProps) => {
 
             <button 
                 type="submit"
-                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 xl:p-4 2xl:p-6 text-sm xl:text-2xm"
+                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 xl:p-4 2xl:p-6 text-sm xl:text-lg hover:bg-opacity-50"
             >
                 Quero fazer o Lidere
             </button>
