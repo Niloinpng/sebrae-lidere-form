@@ -20,12 +20,12 @@ const Campo = ({
   onFocus,
 }: CampoProps) => (
   <div
-    className={`w-full rounded-full flex items-center p-3 lg:p-4
+    className={`w-full rounded-full flex items-center p-3 xl:p-3
       focus-within:ring-2 focus-within:ring-black
       ${iserro ? "bg-Vermelho95 border border-Vermelho35" : "bg-white"}
     `}
   >
-    <label className="w-14 lg:w-24 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1 lg:text-xl lg:font-bold">
+    <label className="w-14 xl:ml-4 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1 xl:text-lg xl:font-bold">
       {name}:
     </label>
     <input
@@ -33,8 +33,9 @@ const Campo = ({
         w-full font-figtree font-medium focus:outline-none
         placeholder:italic bg-transparent
         text-xs
-        lg:text-xl
-        lg:font-bold
+        xl:ml-4
+        xl:text-lg
+        xl:font-bold
         ${iserro ? "placeholder-Vermelho35" : "placeholder:text-Cinza"}
       `}
       type={tipo}

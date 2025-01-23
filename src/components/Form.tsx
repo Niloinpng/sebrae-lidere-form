@@ -105,7 +105,7 @@ const Form = ({ onSuccess }: FormProps) => {
     };
 
     return (
-        <form className="flex flex-col items-center justify-center gap-3 lg:gap-5 w-full" onSubmit={handleSumbit}>
+        <form className="flex flex-col items-center justify-center gap-3 xl:gap-5 w-full" onSubmit={handleSumbit}>
 
             {erros && (
                 <div className="flex flex-row items-center w-full px-2 gap-1">
@@ -145,7 +145,7 @@ const Form = ({ onSuccess }: FormProps) => {
             }}
             />
 
-            <div className="w-full flex flex-col lg:flex-row gap-3">
+            <div className="w-full flex flex-col xl:flex-row gap-3">
 
             <Campo
             name="Email"
@@ -178,7 +178,7 @@ const Form = ({ onSuccess }: FormProps) => {
 
             </div>
 
-            <div className="w-full flex flex-col lg:flex-row gap-3">
+            <div className="w-full flex flex-col xl:flex-row gap-3">
 
             <CampoSelect
             name="Estado"
@@ -210,7 +210,7 @@ const Form = ({ onSuccess }: FormProps) => {
 
             </div>
 
-            <div className="w-full flex flex-col lg:flex-row gap-3 my-3 xl:my-0 items-center justify-center lg:justify-between ">
+            <div className="w-full flex flex-col xl:flex-row gap-3 my-3 xl:my-0 items-center justify-center xl:justify-between xl:items-start">
 
             <div className="flex items-center gap-2">
 
@@ -226,7 +226,7 @@ const Form = ({ onSuccess }: FormProps) => {
                     )}
                 </label>
 
-                <label className="font-figtree font-medium text-white text-xs lg:text-base">
+                <label className="font-figtree font-medium text-white text-xs xl:text-base">
                     Aceito receber conteúdos exclusivos do Sebrae
                 </label>
 
@@ -234,7 +234,7 @@ const Form = ({ onSuccess }: FormProps) => {
 
             <button 
                 type="submit"
-                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 lg:p-3 text-sm lg:text-2xm"
+                className="bg-black rounded-full w-max font-figtree font-bold text-white p-3 xl:p-4 text-sm xl:text-2xm"
             >
                 Quero fazer o Lidere
             </button>

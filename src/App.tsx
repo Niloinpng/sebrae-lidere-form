@@ -27,7 +27,7 @@ function App() {
       />
 
       <div className="relative flex flex-col items-center justify-center p-4 gap-3 z-10 
-                      xl:mx-80">
+                      xl:mx-72">
         {success ? (
           <div className="flex flex-col items-center justify-center gap-16">
             <div className="bg-white rounded-full p-4">
