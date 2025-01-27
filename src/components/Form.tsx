@@ -5,40 +5,17 @@ import { FaCheck } from 'react-icons/fa';
 import { Infos } from "../types/Infos";
 import { FiAlertOctagon } from "react-icons/fi";
 import { validate } from "../utils/validate";
+import estadosCidades from "../utils/estados-cidades.json";
 
 interface FormProps {
     onSuccess?: () => void; 
 }
 
-const UF = [
-    { value: "AC", label: "Acre" },
-    { value: "AL", label: "Alagoas" },
-    { value: "AP", label: "Amapá" },
-    { value: "AM", label: "Amazonas" },
-    { value: "BA", label: "Bahia" },
-    { value: "CE", label: "Ceará" },
-    { value: "DF", label: "Distrito Federal" },
-    { value: "ES", label: "Espírito Santo" },
-    { value: "GO", label: "Goiás" },
-    { value: "MA", label: "Maranhão" },
-    { value: "MT", label: "Mato Grosso" },
-    { value: "MS", label: "Mato Grosso do Sul" },
-    { value: "MG", label: "Minas Gerais" },
-    { value: "PA", label: "Pará" },
-    { value: "PB", label: "Paraíba" },
-    { value: "PR", label: "Paraná" },
-    { value: "PE", label: "Pernambuco" },
-    { value: "PI", label: "Piauí" },
-    { value: "RJ", label: "Rio de Janeiro" },
-    { value: "RN", label: "Rio Grande do Norte" },
-    { value: "RS", label: "Rio Grande do Sul" },
-    { value: "RO", label: "Rondônia" },
-    { value: "RR", label: "Roraima" },
-    { value: "SC", label: "Santa Catarina" },
-    { value: "SP", label: "São Paulo" },
-    { value: "SE", label: "Sergipe" },
-    { value: "TO", label: "Tocantins" },
-]
+
+const UF = estadosCidades.estados.map((uf) => ({
+    value: uf.sigla,
+    label: uf.nome,
+  }));
 
 const formatCPF = (value: string): string => {
     let v = value.replace(/\D/g, "").slice(0, 11);
@@ -68,11 +45,16 @@ const Form = ({ onSuccess }: FormProps) => {
     const[estado, setEstado] = useState('');
     const[cidade, setCidade] = useState('');
     const[aceito, setAceito] = useState(false);
-
     const[erros, setErros] = useState<Infos | null>(null)
+    const cidadesDaUF =
+    estadosCidades.estados.find((uf) => uf.sigla === estado)?.cidades || [];
+    const opcoesCidade = cidadesDaUF.map((cidade) => ({
+        value: cidade,
+        label: cidade,
+    }));
 
     const handleSumbit = (e: FormEvent) => {
-        e.preventDefault();
+        //e.preventDefault();
       
         const data: Infos = {
           cpf,
@@ -97,15 +79,26 @@ const Form = ({ onSuccess }: FormProps) => {
           if (validateErros.cidade) setCidade('');
       
           setErros(validateErros);
-          return;
+          e.preventDefault();
+          return false;
         }
         
-        if (onSuccess) {onSuccess();}
+        //if (onSuccess) {onSuccess();}
 
-    };
-
+        };
+        
     return (
-        <form className="flex flex-col items-center justify-center gap-3 xl:gap-5 w-full 2xl:px-4" onSubmit={handleSumbit}>
+        <form action="https://cl.s12.exct.net/DEManager.aspx" className="flex flex-col items-center justify-center gap-3 xl:gap-5 w-full 2xl:px-4" onSubmit={handleSumbit}>
+        
+        <input type='hidden' name='localidade' value='br'/>
+        <input type="hidden" name="_clientID" value="526001297" />
+        <input type="hidden" name="_deExternalKey" value={"AAAAAAAAAAAAAA"} /> 
+        <input type="hidden" name="_action" value="add" />
+        <input type="hidden" name="_returnXML" value="0" />
+        <input type="hidden" name="_successURL" value={window.location.href + "/?success=1"} />
+        <input type="hidden" name="_errorURL" value="http://www.sebrae.com.br" />
+        <input type="hidden" name="celular" value={celular.replace(/[^\d]+/g,'')} />
+        <input type="hidden" name="cpf" value={cpf.replace(/[^\d]+/g,'')} />
 
             {erros && (
                 <div className="flex flex-row items-center w-full px-2 gap-1 xl:gap-2">
@@ -194,19 +187,25 @@ const Form = ({ onSuccess }: FormProps) => {
               }}
             />
 
-            <Campo
+            <CampoSelect
             name="Cidade"
-            placeholder={erros?.cidade ? erros.cidade:"Informe a cidade"}
-            tipo="text"
+            placeholder={erros?.cidade ? erros.cidade : "Informe a cidade"}
             valor={cidade}
-            onChange={(value) => setCidade(value)} 
-            iserro={!!erros?.cidade} 
+            onChange={(value) => setCidade(value)}
+            iserro={!!erros?.cidade}
+            options={
+                estado
+                ? [{ value: "", label: "Selecione" }, ...opcoesCidade]
+                : [{ value: "", label: "Informe a cidade" }]
+            }
             onFocus={() => {
-                if(erros?.cidade) {
-                setErros(prev => ({ ...prev, cidade: undefined })); 
+                if (erros?.cidade) {
+                setErros((prev) => ({ ...prev, cidade: undefined }));
                 }
             }}
+            disabled={(!estado)}
             />
+
 
             </div>
 
