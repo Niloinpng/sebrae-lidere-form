@@ -105,7 +105,9 @@ const Form = () => {
             )}
 
             <Campo
-            name="CPF"
+            name="_cpf"
+            id="cpf"
+            label="CPF"
             placeholder={erros?.cpf ? erros.cpf : "Informe seu CPF"}
             tipo="text" 
             valor={cpf}
@@ -120,7 +122,9 @@ const Form = () => {
             />
 
             <Campo
-            name="Nome"
+            name="nome"
+            id="nome"
+            label="Nome"
             placeholder={erros?.nome ? erros.nome : "Preencha seu nome completo"}
             tipo="text"
             valor={nome}
@@ -136,7 +140,9 @@ const Form = () => {
             <div className="w-full flex flex-col xl:flex-row gap-3">
 
             <Campo
-            name="E-mail"
+            name="email"
+            id="email"
+            label="E-mail"
             placeholder={erros?.email ? erros.email: "Informe seu melhor e-mail"}
             tipo="text"
             valor={email}
@@ -150,7 +156,9 @@ const Form = () => {
             />
 
             <Campo
-            name="Celular"
+            name="_celular"
+            id="celular"
+            label="Celular"
             placeholder={erros?.celular ? erros.celular : "DDD + telefone"}
             tipo="text" 
             valor={celular}
@@ -169,7 +177,9 @@ const Form = () => {
             <div className="w-full flex flex-col xl:flex-row gap-3">
 
             <CampoSelect
-            name="Estado"
+            name="uf"
+            id="uf"
+            label="Estado"
             placeholder={erros?.estado ? erros.estado:"Selecione"}
             valor={estado}
             onChange={(value) => setEstado(value)}
@@ -183,7 +193,9 @@ const Form = () => {
             />
 
             <CampoSelect
-            name="Cidade"
+            name="cidade"
+            id="cidade"
+            label="Cidade"
             placeholder={erros?.cidade ? erros.cidade : "Informe a cidade"}
             valor={cidade}
             onChange={(value) => setCidade(value)}

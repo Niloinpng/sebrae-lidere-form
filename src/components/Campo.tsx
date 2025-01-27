@@ -1,4 +1,6 @@
 interface CampoProps {
+  id: string;
+  label: string;
   name: string;
   placeholder: string;
   valor: string | number;
@@ -10,6 +12,8 @@ interface CampoProps {
 }
 
 const Campo = ({
+  id,
+  label,
   name,
   placeholder,
   valor,
@@ -18,6 +22,7 @@ const Campo = ({
   iserro,
   formatFunction,
   onFocus,
+  
 }: CampoProps) => (
   <div
     className={`w-full rounded-full flex items-center p-3 xl:p-3 2xl:p-4
@@ -26,7 +31,7 @@ const Campo = ({
     `}
   >
     <label className="whitespace-nowrap w-14 xl:ml-4 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1 xl:text-lg xl:font-bold">
-      {name}:
+      {label}:
     </label>
     <input
       className={`
@@ -38,6 +43,8 @@ const Campo = ({
         ${iserro ? "placeholder-Vermelho35" : "placeholder:text-Cinza"}
       `}
       type={tipo}
+      name={name}
+      id={id}
       placeholder={placeholder}
       value={valor}
       onChange={(e) => {

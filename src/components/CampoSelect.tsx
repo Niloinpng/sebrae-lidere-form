@@ -1,4 +1,6 @@
 interface CampoSelectProps {
+  id: string;
+  label: string;
   name: string;
   placeholder?: string;
   valor: string | number;
@@ -10,6 +12,8 @@ interface CampoSelectProps {
 }
 
 const CampoSelect = ({
+  id,
+  label,
   name,
   placeholder,
   valor,
@@ -31,7 +35,7 @@ const CampoSelect = ({
         disabled ? "cursor-not-allowed" : ""
       }`}
     >
-      {name}:
+      {label}:
     </label>
     <select
       className={`
@@ -44,6 +48,8 @@ const CampoSelect = ({
           ${valor === "" ? "italic text-Cinza" : "normal-case text-black"}
           ${disabled ? "cursor-not-allowed" : ""}
         `}
+      name={name}
+      id={id}
       value={valor}
       onChange={(e) => onChange(e.target.value)}
       onFocus={() => {
