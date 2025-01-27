@@ -7,11 +7,6 @@ import { FiAlertOctagon } from "react-icons/fi";
 import { validate } from "../utils/validate";
 import estadosCidades from "../utils/estados-cidades.json";
 
-interface FormProps {
-    onSuccess?: () => void; 
-}
-
-
 const UF = estadosCidades.estados.map((uf) => ({
     value: uf.sigla,
     label: uf.nome,
@@ -37,7 +32,7 @@ const formatTelefone = (value: string): string => {
     return v;
 };
 
-const Form = ({ onSuccess }: FormProps) => {
+const Form = () => {
     const[cpf, setCpf] = useState('');
     const[nome, setNome] = useState('');
     const[email, setEmail] = useState('');

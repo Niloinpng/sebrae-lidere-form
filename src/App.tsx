@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Form from "./components/Form";
 import { FaCheck } from 'react-icons/fa';
 import fundo from './imagens/fundo.png';
@@ -7,9 +7,17 @@ import fundomoblie from './imagens/fundomoblie.png';
 function App() {
   const [success, setSuccess] = useState(false);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("success") === "1") {
+      setSuccess(true);
+    }
+  }, []);
+
   return (
     <div className="relative bg-LiderePreto10 min-h-screen w-full flex items-center justify-center overflow-hidden">
 
+      {/* Imagem de fundo para telas menores */}
       <div 
         className="absolute inset-0 bg-center bg-no-repeat xl:hidden"
         style={{
@@ -18,6 +26,7 @@ function App() {
         }}
       />
 
+      {/* Imagem de fundo para telas maiores */}
       <div 
         className="absolute inset-0 bg-center bg-no-repeat hidden xl:block"
         style={{
@@ -55,11 +64,9 @@ function App() {
                           xl:text-xm
                           2xl:text-xl
                           ">
-              
-              <span className="hidden xl:inline"></span>
               Preencha os campos abaixo para ser notificado quando houver turmas disponíveis em seu estado.
             </h2>
-            <Form onSuccess={() => setSuccess(true)} />
+            <Form />
           </>
         )}
       </div>
