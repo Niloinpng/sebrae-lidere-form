@@ -148,7 +148,7 @@ const Form = ({ onSuccess }: FormProps) => {
             <div className="w-full flex flex-col xl:flex-row gap-3">
 
             <Campo
-            name="Email"
+            name="E-mail"
             placeholder={erros?.email ? erros.email: "Informe seu melhor e-mail"}
             tipo="text"
             valor={email}

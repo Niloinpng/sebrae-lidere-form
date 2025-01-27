@@ -25,7 +25,7 @@ const Campo = ({
       ${iserro ? "bg-Vermelho95 border border-Vermelho35" : "bg-white"}
     `}
   >
-    <label className="w-14 xl:ml-4 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1 xl:text-lg ">
+    <label className="whitespace-nowrap w-14 xl:ml-4 text-left font-figtree text-LidereAzul62 font-medium text-xs pl-1 xl:text-lg xl:font-bold">
       {name}:
     </label>
     <input
