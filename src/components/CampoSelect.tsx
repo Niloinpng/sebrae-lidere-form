@@ -27,7 +27,7 @@ const CampoSelect = ({
     className={`w-full rounded-full flex items-center p-3 xl:p-3 2xl:p-4 ${
       disabled
         ? "opacity-60 cursor-not-allowed"
-        : "focus-within:ring-2 focus-within:ring-black"
+        : "focus-within:ring-1 focus-within:ring-black"
     } ${iserro ? "bg-Vermelho95 border border-Vermelho35" : "bg-white"}`}
   >
     <label
